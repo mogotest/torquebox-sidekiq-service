@@ -4,6 +4,8 @@ TorqueBox Sidekiq Service
 This library provides a TorqueBox service for running Sidekiq inside the TorqueBox application server.  It replaces the
 Sidekiq CLI client typically used to start up TorqueBox.
 
+[![Build Status](https://secure.travis-ci.org/mogotest/torquebox-sidekiq-service.png)](http://travis-ci.org/mogotest/torquebox-sidekiq-service)
+
 Rationale
 ---------
 
