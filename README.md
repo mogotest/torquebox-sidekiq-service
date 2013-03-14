@@ -23,6 +23,7 @@ There are several other reasons why a TorqueBox service may make sense for you:
 ** No need for foreman or similar tools in development
 * Easier to debug & profile by way of TorqueBox's debugging and profiling capabilities
 * Better opportunity for JVM JIT optimization
+* Faster deploys, as you don't have to wait for the Sidekiq CLI client to start and stop
 
 Of course, for every item that I think is a pro, someone else may think is a con.  Depending on perspective, some flaws
 with this approach are:
