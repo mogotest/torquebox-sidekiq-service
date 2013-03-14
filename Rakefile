@@ -17,11 +17,15 @@ Jeweler::Tasks.new do |gem|
   gem.name = "torquebox-sidekiq-service"
   gem.homepage = "http://github.com/mogotest/torquebox-sidekiq-service"
   gem.license = "ASLv2"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = 'A TorqueBox service for running Sidekiq in the TorqueBox application server.'
+  gem.description = <<-DESC
+    The TorqueBox Sidekiq service replaces the traditional Sidekiq CLI client for starting a Sidekiq processor.  This
+    allows TorqueBox features only available in-container to be usable by all your Sidekiq workers.  It has the added
+    benefit of reducing memory overhead by running in a single JVM and allows for better optimization through JIT and
+    better debugging & profiling through TorqueBox's runtime inspection facilities.
+  DESC
   gem.email = "nirvdrum@gmail.com"
   gem.authors = ["Kevin Menard"]
-  # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
 
