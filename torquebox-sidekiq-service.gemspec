@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
     "lib/torque_box/sidekiq_service.rb",
     "lib/torquebox-sidekiq-service.rb",
     "test/helper.rb",
-    "test/sidekiq_service_test.rb"
+    "test/sidekiq_service_test.rb",
+    "torquebox-sidekiq-service.gemspec"
   ]
   s.homepage = "http://github.com/mogotest/torquebox-sidekiq-service"
   s.licenses = ["ASLv2"]
@@ -37,14 +38,20 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<torquebox-sidekiq-service>, [">= 0"])
       s.add_runtime_dependency(%q<sidekiq>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
+      s.add_dependency(%q<torquebox-sidekiq-service>, [">= 0"])
       s.add_dependency(%q<sidekiq>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
     end
   else
+    s.add_dependency(%q<torquebox-sidekiq-service>, [">= 0"])
     s.add_dependency(%q<sidekiq>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
   end
 end
