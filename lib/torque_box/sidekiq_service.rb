@@ -1,6 +1,6 @@
 module TorqueBox
   class SidekiqService
-    attr_accessor :config, :launcher
+    attr_accessor :config, :launcher, :start_failed
 
     CONFIG_OPTIONS_TO_STRIP = [:config_file, :daemon, :environment, :pidfile, :require, :tag]
 
@@ -13,7 +13,16 @@ module TorqueBox
     end
 
     def stop
-      launcher.stop
+      # Since the stop call may come before the launcher has finished starting up, try to see
+      # if the launcher ever gets initialized.  We really don't want to orphan a Sidekiq launcher
+      # if we can avoid it.
+      Timeout::timeout(5.minutes) do
+        while launcher.nil? && !start_failed
+          sleep 1
+        end
+      end
+
+      launcher.stop if launcher
     end
 
     def run
@@ -36,9 +45,15 @@ module TorqueBox
       require 'sidekiq/manager'
       require 'sidekiq/scheduled'
       require 'sidekiq/launcher'
+
       @launcher = Sidekiq::Launcher.new(Sidekiq.options)
 
       launcher.run
+    rescue => e
+      puts e.message
+      puts e.backtrace
+
+      @start_failed = true
     end
   end
 end
