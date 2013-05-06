@@ -35,6 +35,9 @@ module TorqueBox
         Sidekiq::Logging.logger = TorqueBox::Logger.new('sidekiq') if ENV.has_key?('TORQUEBOX_CONTEXT')
       end
 
+      require 'celluloid'
+      Celluloid.task_class = Celluloid::TaskThread
+
       require 'celluloid/autostart'
 
       if Sidekiq.options.has_key?(:verbose)
