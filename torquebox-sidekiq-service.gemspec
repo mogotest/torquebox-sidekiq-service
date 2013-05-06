@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "torquebox-sidekiq-service"
-  s.version = "0.1.3"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kevin Menard"]
-  s.date = "2013-04-30"
+  s.date = "2013-05-06"
   s.description = "    The TorqueBox Sidekiq service replaces the traditional Sidekiq CLI client for starting a Sidekiq processor.  This\n    allows TorqueBox features only available in-container to be usable by all your Sidekiq workers.  It has the added\n    benefit of reducing memory overhead by running in a single JVM and allows for better optimization through JIT and\n    better debugging & profiling through TorqueBox's runtime inspection facilities.\n"
   s.email = "nirvdrum@gmail.com"
   s.extra_rdoc_files = [
@@ -49,9 +49,11 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
       s.add_dependency(%q<torquebox-sidekiq-service>, [">= 0"])
       s.add_dependency(%q<sidekiq>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
@@ -61,6 +63,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<torquebox-sidekiq-service>, [">= 0"])
     s.add_dependency(%q<sidekiq>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
