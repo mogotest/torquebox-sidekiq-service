@@ -45,8 +45,6 @@ module TorqueBox
         Celluloid.logger = Sidekiq.logger
       end
 
-      require 'sidekiq/manager'
-      require 'sidekiq/scheduled'
       require 'sidekiq/launcher'
 
       @launcher = Sidekiq::Launcher.new(Sidekiq.options)
