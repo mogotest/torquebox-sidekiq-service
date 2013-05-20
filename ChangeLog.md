@@ -1,3 +1,8 @@
+0.2.1 (05/19/2013)
+------------------
+
+* Sidekiq sets up Celluloid to us TaskThreads on its own now, so no need for us to do it.
+
 0.2.0 (05/05/2013)
 ------------------
 
