@@ -1,3 +1,8 @@
+0.2.2 (05/28/2013)
+------------------
+
+* Use a mutex rather than a timeout for dealing with race conditions.
+
 0.2.1 (05/19/2013)
 ------------------
 

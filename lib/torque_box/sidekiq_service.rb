@@ -6,23 +6,15 @@ module TorqueBox
 
     def initialize(opts = {})
       @config = opts.symbolize_keys.reject { |k, _| CONFIG_OPTIONS_TO_STRIP.include?(k) }
+      @mutex = Mutex.new
     end
 
     def start
-      Thread.new { run }
+      Thread.new { @mutex.synchronize { run } }
     end
 
     def stop
-      # Since the stop call may come before the launcher has finished starting up, try to see
-      # if the launcher ever gets initialized.  We really don't want to orphan a Sidekiq launcher
-      # if we can avoid it.
-      Timeout::timeout(5.minutes) do
-        while launcher.nil? && !start_failed
-          sleep 1
-        end
-      end
-
-      launcher.stop if launcher
+      @mutex.synchronize { launcher.stop } if launcher
     end
 
     def run
