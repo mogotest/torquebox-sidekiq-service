@@ -14,6 +14,14 @@ module TorqueBox
     end
 
     def stop
+      if launcher
+        busy = launcher.manager.instance_variable_get(:@busy)
+
+        require 'pp'
+        puts "\n\n\n\nKEVIN> Busy size: #{busy.size}"
+        pp busy
+      end
+
       @mutex.synchronize { launcher.stop } if launcher
     end
 
